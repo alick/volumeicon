@@ -1,20 +1,16 @@
 # Review at https://bugzilla.redhat.com/show_bug.cgi?id=722914
 
 Name:           volumeicon
-Version:        0.4.6
-Release:        11%{?dist}
+Version:        0.5.1
+Release:        1%{?dist}
 Summary:        Lightweight volume control for the system tray
 
 License:        GPLv3
 URL:            http://www.softwarebakery.com/maato/volumeicon.html
-Source0:        http://www.softwarebakery.com/maato/files/volumeicon/volumeicon-%{version}.tar.gz
+# Obtain the tarball for a certain branch via:
+Source0:        https://github.com/alick/vit/archive/copr.tar.gz#/%{name}-%{version}-%{release}.tar.gz
 # Source1 was borrowed from gnome-media package and adjusted for our needs
 Source1:        %{name}.desktop
-# Use pavucontrol by default in Fedora. Not upstreamed.
-# Do not hardcode card hw:0. Submitted upstream by mail on 2012-01-14. Accepted.
-Patch0:         %{name}-0.4.5-default-config.patch
-# Fix build error on Fedora. Received by mail from upstream on 2012-01-19.
-Patch1:         %{name}-0.4.6-fedora.patch
 
 BuildRequires:  alsa-lib-devel
 BuildRequires:  desktop-file-utils
@@ -36,7 +32,7 @@ Features:
 * Hotkey support
 
 %prep
-%setup -q
+%autosetup -n %{name}-%{version}
 %patch0 -p1 -b .default
 %patch1 -p1 -b .default
 
@@ -64,6 +60,9 @@ rm -rf %{buildroot}
 %{_datadir}/%{name}/
 
 %changelog
+* Wed Dec 23 2017 Alick Zhao <alick AT fedoraproject DOT org> 0.5.1-1
+- Update to 0.5.1
+
 * Thu Aug 03 2017 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.6-11
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
 
