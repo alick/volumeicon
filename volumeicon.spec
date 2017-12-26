@@ -7,14 +7,10 @@ Summary:        Lightweight volume control for the system tray
 
 License:        GPLv3
 URL:            http://www.softwarebakery.com/maato/volumeicon.html
-# Obtain the tarball for a certain branch via:
-Source0:        https://github.com/alick/vit/archive/copr.tar.gz#/%{name}-%{version}-%{release}.tar.gz
-# Source1 was borrowed from gnome-media package and adjusted for our needs
-Source1:        %{name}.desktop
+Source0:        %{name}-%{version}-%{release}.tar.gz
 
 BuildRequires:  alsa-lib-devel
-BuildRequires:  desktop-file-utils
-BuildRequires:  gtk2-devel
+BuildRequires:  gtk3-devel
 BuildRequires:  keybinder-devel
 BuildRequires:  libnotify-devel >= 0.5.0
 
@@ -25,7 +21,7 @@ tray.
 Features:
 * Change volume by scrolling on the systray icon
 * Ability to choose which channel to control
-* Configurable stepsize
+* Configurable step size
 * Several icon themes
 * Configurable external mixer
 * Volume slider
@@ -33,11 +29,10 @@ Features:
 
 %prep
 %autosetup -n %{name}-%{version}
-%patch0 -p1 -b .default
-%patch1 -p1 -b .default
 
 
 %build
+./autogen.sh
 %configure --enable-notify
 make %{?_smp_mflags}
 
@@ -45,22 +40,20 @@ make %{?_smp_mflags}
 %install
 rm -rf %{buildroot}
 make install DESTDIR=%{buildroot} INSTALL='install -p'
-
-desktop-file-install --dir=%{buildroot}%{_sysconfdir}/xdg/autostart %{SOURCE1}
+%find_lang %{name}
 
 %clean
 rm -rf %{buildroot}
 
 
-%files
+%files -f %{name}.lang
 %defattr(-,root,root,-)
-%doc AUTHORS ChangeLog COPYING 
-%config(noreplace) %{_sysconfdir}/xdg/autostart/%{name}.desktop
+%doc AUTHORS ChangeLog COPYING README
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 
 %changelog
-* Sat Dec 23 2017 Alick Zhao <alick AT fedoraproject DOT org> 0.5.1-1
+* Mon Dec 25 2017 Alick Zhao <alick@fedoraproject.org> - 0.5.1-1
 - Update to 0.5.1
 
 * Thu Aug 03 2017 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.6-11
