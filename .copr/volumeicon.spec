@@ -60,7 +60,7 @@ rm -rf %{buildroot}
 %{_datadir}/%{name}/
 
 %changelog
-* Wed Dec 23 2017 Alick Zhao <alick AT fedoraproject DOT org> 0.5.1-1
+* Sat Dec 23 2017 Alick Zhao <alick AT fedoraproject DOT org> 0.5.1-1
 - Update to 0.5.1
 
 * Thu Aug 03 2017 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.6-11
