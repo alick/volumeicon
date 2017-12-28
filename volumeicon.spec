@@ -7,6 +7,12 @@ Summary:        Lightweight volume control for the system tray
 
 License:        GPLv3
 URL:            http://www.softwarebakery.com/maato/volumeicon.html
+# The source for this package was pulled from upstream's vcs.  Use the
+# following commands to generate the tarball:
+#  git clone https://github.com/alick/volumeicon.git
+#  cd volumeicon
+#  git checkout copr
+#  rpkg make-source
 Source0:        %{name}-%{version}-%{release}.tar.gz
 
 BuildRequires:  alsa-lib-devel
