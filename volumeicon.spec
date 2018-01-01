@@ -12,6 +12,7 @@ URL:            http://www.softwarebakery.com/maato/volumeicon.html
 #  git clone https://github.com/alick/volumeicon.git
 #  cd volumeicon
 #  git checkout copr
+#  ./autogen.sh
 #  rpkg make-source
 Source0:        %{name}-%{version}.tar.gz
 
@@ -19,6 +20,7 @@ BuildRequires:  alsa-lib-devel
 BuildRequires:  gtk3-devel
 BuildRequires:  keybinder-devel
 BuildRequires:  libnotify-devel >= 0.5.0
+BuildRequires:  intltool >= 0.23
 
 %description
 Volume Icon aims to be a lightweight volume control that sits in your system
@@ -38,7 +40,6 @@ Features:
 
 
 %build
-./autogen.sh
 %configure --enable-notify
 make %{?_smp_mflags}
 
