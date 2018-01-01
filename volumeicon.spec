@@ -12,14 +12,15 @@ URL:            http://www.softwarebakery.com/maato/volumeicon.html
 #  git clone https://github.com/alick/volumeicon.git
 #  cd volumeicon
 #  git checkout copr
-#  ./autogen.sh
 #  rpkg make-source
 Source0:        %{name}-%{version}.tar.gz
 
 BuildRequires:  alsa-lib-devel
 BuildRequires:  gtk3-devel
+BuildRequires:  glib2-devel
 BuildRequires:  keybinder-devel
 BuildRequires:  libnotify-devel >= 0.5.0
+BuildRequires:  autoconf
 BuildRequires:  intltool >= 0.23
 
 %description
@@ -40,6 +41,7 @@ Features:
 
 
 %build
+./autogen.sh
 %configure --enable-notify
 make %{?_smp_mflags}
 
