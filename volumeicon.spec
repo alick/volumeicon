@@ -13,7 +13,7 @@ URL:            http://www.softwarebakery.com/maato/volumeicon.html
 #  cd volumeicon
 #  git checkout copr
 #  rpkg make-source
-Source0:        %{name}-%{version}-%{release}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 
 BuildRequires:  alsa-lib-devel
 BuildRequires:  gtk3-devel
@@ -59,7 +59,7 @@ rm -rf %{buildroot}
 %{_datadir}/%{name}/
 
 %changelog
-* Mon Dec 25 2017 Alick Zhao <alick@fedoraproject.org> - 0.5.1-1
+* Mon Jan 01 2018 Alick Zhao <alick@fedoraproject.org> - 0.5.1-1
 - Update to 0.5.1
 
 * Thu Aug 03 2017 Fedora Release Engineering <releng@fedoraproject.org> - 0.4.6-11
